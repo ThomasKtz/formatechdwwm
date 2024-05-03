@@ -31,8 +31,8 @@ class AddAdmin{
 
             if($checkExistingCity){
                 $city = $checkExistingCity;
-                var_dump($city);
-                $this->modelAdmin->addOneAdmin($_POST['civility'], $_POST["firstname"], $_POST["lastname"], $_POST["phone"], $_POST["email"], $_POST["password"], $_POST["street"], $city["city_id"]);
+                $passwordhash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                $this->modelAdmin->addOneAdmin($_POST['civility'], $_POST["firstname"], $_POST["lastname"], $_POST["phone"], $_POST["email"], $passwordhash, $_POST["street"], $city["city_id"]);
             } else{
                 $this->modelCity->addCity($_POST["zipcode"], $_POST["city"], 1);
             }
