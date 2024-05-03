@@ -27,4 +27,31 @@ class ModelAdmin{
             return null;
         }
     }
+
+    public function addOneAdmin($civility, $firstname, $lastname, $phone, $email, $password, $street, $idCity){
+        try{
+            $request = $this->db->prepare('INSERT INTO admins   (admin_civility,
+                                                                admin_firstname,
+                                                                admin_lastname,
+                                                                admin_phone,
+                                                                admin_email,
+                                                                admin_password,
+                                                                admin_adress,
+                                                                id_city)
+                                            VALUES (?,?,?,?,?,?,?,?)');
+            $request->execute([
+                $civility,
+                $firstname,
+                $lastname,
+                $phone,
+                $email,
+                $password,
+                $street,
+                $idCity
+            ]);
+
+        } catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }

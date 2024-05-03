@@ -10,6 +10,7 @@ require('src/Model/ModelSuperAdmin.php');
 require('src/Model/ModelAdmin.php');
 require('src/Model/ModelInstructor.php');
 require('src/Model/ModelStudent.php');
+require('src/Model/ModelCity.php');
 
 $page = filter_input(INPUT_GET, "page");
 
