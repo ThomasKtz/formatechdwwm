@@ -37,8 +37,8 @@ class SignIn{
                         'email'     => $superAdmin['super_admin_email'],
                         'id'        => $superAdmin['super_admin_id'],
                     ];
-                    // header('Location: index.php?page=listMovies');
-                    // exit();
+                    header('Location: index.php?page=SuperAdmin');
+                    exit();
                 }
             
 

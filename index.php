@@ -4,8 +4,8 @@ session_start();
 
 
 require('src/Controller/SignIn.php');
-require('src/Controller/AddUser.php');
-require('src/Controller/superAdmin.php');
+require('src/Controller/AddAdmin.php');
+require('src/Controller/SuperAdmin.php');
 require('src/Model/ModelSuperAdmin.php');
 require('src/Model/ModelAdmin.php');
 require('src/Model/ModelInstructor.php');
@@ -15,7 +15,7 @@ $page = filter_input(INPUT_GET, "page");
 
 $route = [
     "SignIn"=> SignIn::class,
-    "AddUser"=> AddUser::class,
+    "AddAdmin"=> AddAdmin::class,
     "SuperAdmin"=> SuperAdmin::class,
 ];
 
