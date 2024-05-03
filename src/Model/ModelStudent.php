@@ -19,7 +19,7 @@ class ModelStudent{
 
     public function getOneStudent($email){
         try{
-            $request = $this->db->prepare('SELECT * FROM students WHERE student_email = ?');
+            $request = $this->db->prepare('SELECT *, student_password AS aliasPassword, student_email AS aliasEmail FROM students WHERE student_email = ?');
             $request->execute([$email]);
             $student = $request->fetch();
             return $student;

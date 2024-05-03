@@ -19,7 +19,7 @@ class ModelSuperAdmin{
 
     public function getOneSuperAdmin($email){
         try{
-            $request = $this->db->prepare('SELECT * FROM super_admins WHERE super_admin_email = ?');
+            $request = $this->db->prepare('SELECT *, super_admin_password AS aliasPassword, super_admin_email AS aliasEmail FROM super_admins WHERE super_admin_email = ?');
             $request->execute([$email]);
             $superAdmin = $request->fetch();
             return $superAdmin;

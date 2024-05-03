@@ -10,6 +10,5 @@
     </div>
     <button type="submit">Se connecter</button>
 
-
-    <?php var_dump($_SESSION)?>
+<?php var_dump($_SESSION); ?>
 </form>

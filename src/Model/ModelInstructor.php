@@ -19,7 +19,7 @@ class ModelInstructor{
 
     public function getOneInstructor($email){
         try{
-            $request = $this->db->prepare('SELECT * FROM instructors WHERE instructor_email = ?');
+            $request = $this->db->prepare('SELECT *, instructor_password AS aliasPassword, instructor_email AS aliasEmail FROM instructors WHERE instructor_email = ?');
             $request->execute([$email]);
             $instructor = $request->fetch();
             return $instructor;

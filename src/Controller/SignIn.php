@@ -20,36 +20,40 @@ class SignIn{
     
         if(isset($_POST['email'])){
 
-            if(!empty($_POST['email']) || !empty($_POST['password'])){
-                
-                $superAdmin = $this->modelSuperAdmin->getOneSuperAdmin($_POST['email']);
-
-                if($superAdmin === null){
-                    var_dump("SA non trouvé");
-
-                }elseif(!$superAdmin || !password_verify($_POST['password'], $superAdmin['super_admin_password'])){
-                    var_dump("identifants incorrect");
-                }else{
-
-                    $_SESSION['user'] = [
-                        'firstname'    => $superAdmin['super_admin_firstname'],
-                        'lastname'    => $superAdmin['super_admin_lastname'],
-                        'email'     => $superAdmin['super_admin_email'],
-                        'id'        => $superAdmin['super_admin_id'],
-                    ];
-                    header('Location: index.php?page=SuperAdmin');
-                    exit();
-                }
-            
-
-
-            } else {
+            if(empty($_POST['email']) || empty($_POST['password'])){
 
                 var_dump('Merci de remplir tous les champs');
-            }
-            
-        }
+                
+            } else {
 
+                $user = $this->modelSuperAdmin->getOneSuperAdmin($_POST['email']);
+                $userType = "SuperAdmin";
+                if(!$user){ 
+                    $user = $this->modelAdmin->getOneAdmin($_POST['email']);
+                    $userType = 'Admin';
+                }
+                if(!$user){
+                    $user = $this->modelInstructor->getOneInstructor($_POST['email']);
+                    $userType = 'Instructor';
+                }
+                if(!$user){
+                    $user = $this->modelStudent->getOneStudent($_POST['email']);
+                    $userType = 'Student';
+                }
+                if(!$user){
+                    var_dump("Utilisateur non trouvé");
+                }elseif (!$user || !password_verify($_POST['password'], $user['aliasPassword'])){
+                    var_dump("identifants incorrect");
+                }else {
+                    $_SESSION['user'] = [
+                        'email'=> $user['aliasEmail'],
+                        'userType'=> $userType,
+                    ];
+                    header("Location: index.php?page=" . $userType);
+                    exit();
+                    }
+                }
+            }                 
 
         include(__DIR__ . '/../View/signIn.php');
     }

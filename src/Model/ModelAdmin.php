@@ -18,7 +18,7 @@ class ModelAdmin{
 
     public function getOneAdmin($email){
         try{
-            $request = $this->db->prepare('SELECT * FROM admins WHERE admin_email = ?');
+            $request = $this->db->prepare('SELECT *, admin_password AS aliasPassword, admin_email AS aliasEmail FROM admins WHERE admin_email = ?');
             $request->execute([$email]);
             $Admin = $request->fetch();
             return $Admin;
