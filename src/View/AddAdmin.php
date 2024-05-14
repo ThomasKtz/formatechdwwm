@@ -4,9 +4,9 @@
     <div>
         <label for="civility">Civilité</label>
         <select name="civility" id="civility">
-            <option value="">Veuillez choisir</option> 
-            <option value="0">M.</option> 
-            <option value="1">Mme</option> 
+            <option value="">Veuillez choisir</option>
+            <option value="0">M.</option>
+            <option value="1">Mme</option>
         </select>
     </div>
     <div>

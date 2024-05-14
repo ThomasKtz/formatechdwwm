@@ -1,15 +1,20 @@
 <?php
 
-class SuperAdmin{
+class SuperAdmin
+{
 
 
 
-    public function manage(){
-    
+
+    public function manage()
+    {
 
 
-        
-        include(__DIR__ . '/../View/superAdmin.php');
+
+
+        include (__DIR__ . '/../View/Header.php');
+        include (__DIR__ . '/../View/superAdmin.php');
+        include (__DIR__ . '/../View/Footer.php');
     }
 
 }
