@@ -13,9 +13,7 @@
 
    <header>
       <nav>
-         <div class="logo">
-            <a href="index.php"><img>Logo</a>
-         </div>
+         <a id="logo" href="index.php"><img src="src/img/logo.png" alt="logo"></a>
          <div class="navLinks">
             <a href="index.php?page=SignIn">Se connecter</a>
             <a href="index.php?logout=true">Se deconnecter</a>
