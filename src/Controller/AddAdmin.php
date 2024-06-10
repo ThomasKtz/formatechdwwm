@@ -14,9 +14,7 @@ class AddAdmin
 
     public function manage()
     {
-
         if (isset($_POST["firstname"])) {
-
             if (
                 empty($_POST["civility"]) ||
                 empty($_POST["firstname"]) ||
@@ -33,7 +31,6 @@ class AddAdmin
             } else {
                 $checkExistingCity = $this->modelCity->checkExistingCity($_POST["zipcode"], $_POST['city']);
             }
-
             if ($checkExistingCity) {
                 $city = $checkExistingCity;
                 $passwordhash = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -42,8 +39,6 @@ class AddAdmin
                 $this->modelCity->addCity($_POST["zipcode"], $_POST["city"], 1);
             }
         }
-
-
         include (__DIR__ . '/../View/Header.php');
         include (__DIR__ . '/../View/AddAdmin.php');
         include (__DIR__ . '/../View/Footer.php');

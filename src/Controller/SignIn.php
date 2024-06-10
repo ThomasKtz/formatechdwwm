@@ -21,15 +21,10 @@ class SignIn
 
     public function manage()
     {
-
         if (isset($_POST['email'])) {
-
             if (empty($_POST['email']) || empty($_POST['password'])) {
-
                 var_dump('Merci de remplir tous les champs');
-
             } else {
-
                 $user = $this->modelSuperAdmin->getOneSuperAdmin($_POST['email']);
                 $userType = "SuperAdmin";
                 if (!$user) {
@@ -58,7 +53,6 @@ class SignIn
                 }
             }
         }
-
         include (__DIR__ . '/../View/Header.php');
         include (__DIR__ . '/../View/SignIn.php');
         include (__DIR__ . '/../View/Footer.php');
